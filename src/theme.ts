@@ -50,12 +50,12 @@ export const theme = createTheme({
     ],
   },
 
-  fontFamily: "Comic Sans MS, cursive, sans-serif",
+  fontFamily: "Helvetica, Arial, sans-serif",
 
   defaultRadius: "md",
 
   headings: {
-    fontFamily: "Comic Sans MS, cursive, sans-serif",
+    fontFamily: "Helvetica, Arial, sans-serif",
     fontWeight: "600",
   },
 });

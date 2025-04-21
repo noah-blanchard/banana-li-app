@@ -57,18 +57,32 @@ export default function BusyStatus({ user, otherBusy, onToggleBusy, meBusy }: Bu
       }}
     >
       <Box pt="xl">
-        <Text size="lg" fw={500} mb="lg" ta="center">
-          Hello {user.charAt(0).toUpperCase() + user.slice(1)} !
-        </Text>
+        <Paper
+          shadow="md"
+          radius="md"
+          py={10}
+          withBorder
+          style={{
+            textAlign: 'center',
+            backgroundColor: '#fff',
+            borderWidth: 2,
+            borderStyle: 'solid',
+            transition: 'border-color 0.3s ease',
+          }}
+        >
+          <Text size="lg" fw={500} ta="center">
+            Hello {user.charAt(0).toUpperCase() + user.slice(1)} 👋
+          </Text>
+        </Paper>
 
-        <Group align="center" justify="center" gap="md">
+        <Group align="center" justify="center" gap="md" my={30} py={20}>
           <Switch
             size="lg"
             checked={meBusy}
             onChange={handleChange}
             color={switchColor}
           />
-          <Text size="md" fw={500}>{label}</Text>
+          <Text size="lg" fw={500} style={{ whiteSpace: 'nowrap' }}>{label}</Text>
         </Group>
       </Box>
 
