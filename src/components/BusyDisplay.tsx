@@ -7,7 +7,6 @@ import {
 } from '@mantine/core'
 import BusyButton from './BusyButton'
 import { HumanCat, HumanDinosaur } from 'react-kawaii'
-import { useEffect, useState } from 'react'
 
 interface BusyStatusProps {
   user: 'nono' | 'lili'
