@@ -1,14 +1,12 @@
 import {
-  Switch,
   Text,
   Box,
   Paper,
-  Group,
   useMantineTheme,
   Flex,
 } from '@mantine/core'
 import BusyButton from './BusyButton'
-import { HumanCat, HumanDinosaur, Planet } from 'react-kawaii'
+import { HumanCat, HumanDinosaur } from 'react-kawaii'
 
 interface BusyStatusProps {
   user: 'nono' | 'lili'
@@ -72,7 +70,7 @@ export default function BusyStatus({ user, otherBusy, onToggleBusy, meBusy }: Bu
 
 
         <Flex direction={'column'} align="center" justify="center" gap="md" my={30} py={20}>
-          <BusyButton onToggleBusy={handleChange} user={user} otherBusy={otherBusy} meBusy={meBusy} />
+          <BusyButton onToggleBusy={handleChange} meBusy={meBusy} />
         </Flex>
       </Box>
 
