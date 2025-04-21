@@ -116,6 +116,9 @@ export default function App() {
     };
   }, [user]);
 
+
+  console.log('meBusy', busy, 'otherBusy', otherBusy)
+
   // 🚪 Interface choix de user
   if (!user) {
     return (

@@ -1,12 +1,14 @@
 import {
-  Container,
   Switch,
   Text,
   Box,
   Paper,
   Group,
   useMantineTheme,
+  Flex,
 } from '@mantine/core'
+import BusyButton from './BusyButton'
+import { HumanCat, HumanDinosaur, Planet } from 'react-kawaii'
 
 interface BusyStatusProps {
   user: 'nono' | 'lili'
@@ -19,17 +21,14 @@ export default function BusyStatus({ user, otherBusy, onToggleBusy, meBusy }: Bu
 
   const theme = useMantineTheme()
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.checked
+  const handleChange = () => {
     if (onToggleBusy) {
-      onToggleBusy(value)
+      onToggleBusy(!meBusy);
     }
   }
 
   const otherUser = user === 'nono' ? 'Lili' : 'Nono'
 
-  const switchColor = meBusy ? 'pastelRed' : 'pastelGreen'
-  const label = meBusy ? "I'm busy 🛑" : "I'm available ✅"
 
   const backgroundColor = meBusy
     ? theme.colors.pastelRed[0]
@@ -44,67 +43,62 @@ export default function BusyStatus({ user, otherBusy, onToggleBusy, meBusy }: Bu
     : theme.colors.pastelGreen[7]
 
   return (
-    <Container
-      size="xs"
-      px="md"
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        backgroundColor,
-        transition: 'background-color 0.3s ease',
-      }}
+    <Flex
+      direction="column"
+      bg={backgroundColor}
+      h='100vh'
+      justify='space-between'
+      px={20}
     >
+      <Paper
+        my={20}
+        shadow="md"
+        radius="md"
+        p={20}
+        withBorder
+        style={{
+          textAlign: 'center',
+          backgroundColor: '#fff',
+          borderWidth: 2,
+          borderStyle: 'solid',
+          transition: 'border-color 0.3s ease',
+        }}
+      >
+        <Text size="lg" fw={500} ta="center">
+          Hello {user.charAt(0).toUpperCase() + user.slice(1)} 👋
+        </Text>
+      </Paper>
       <Box pt="xl">
-        <Paper
-          shadow="md"
-          radius="md"
-          py={10}
-          withBorder
-          style={{
-            textAlign: 'center',
-            backgroundColor: '#fff',
-            borderWidth: 2,
-            borderStyle: 'solid',
-            transition: 'border-color 0.3s ease',
-          }}
-        >
-          <Text size="lg" fw={500} ta="center">
-            Hello {user.charAt(0).toUpperCase() + user.slice(1)} 👋
-          </Text>
-        </Paper>
 
-        <Group align="center" justify="center" gap="md" my={30} py={20}>
-          <Switch
-            size="lg"
-            checked={meBusy}
-            onChange={handleChange}
-            color={switchColor}
-          />
-          <Text size="lg" fw={500} style={{ whiteSpace: 'nowrap' }}>{label}</Text>
-        </Group>
+
+        <Flex direction={'column'} align="center" justify="center" gap="md" my={30} py={20}>
+          <BusyButton onToggleBusy={handleChange} user={user} otherBusy={otherBusy} meBusy={meBusy} />
+        </Flex>
       </Box>
 
       <Paper
         shadow="md"
         radius="md"
-        p="md"
+        p={20}
         withBorder
+        my={20}
         style={{
           textAlign: 'center',
           backgroundColor: '#fff',
-          marginBottom: 32,
+
           borderColor,
           borderWidth: 2,
           borderStyle: 'solid',
           transition: 'border-color 0.3s ease',
         }}
       >
-        <Text fw={600} style={{ color: textColor }}>
-          {otherUser} is {otherBusy ? 'Busy 🛑' : 'Available ✅'}
-        </Text>
+        <Flex direction={"row"} justify="center" align="center">
+          <Text fw={600} style={{ color: textColor }}>
+            {otherUser} is {otherBusy ? `Busy` : 'Available'}
+          </Text>
+          {otherUser === 'Lili' ? <HumanCat size={50} mood={otherBusy ? "sad" : "happy"} color={otherBusy ? theme.colors.pastelRed[4] : theme.colors.pastelGreen[4]} /> : <HumanDinosaur size={50} mood={otherBusy ? "sad" : "happy"} color={otherBusy ? theme.colors.pastelRed[4] : theme.colors.pastelGreen[4]} />}
+        </Flex>
       </Paper>
-    </Container>
+    </Flex>
   )
 }
