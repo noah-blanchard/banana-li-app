@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/banana-li-app/dev-sw.js?dev-sw', { scope: '/banana-li-app/', type: 'classic' })
