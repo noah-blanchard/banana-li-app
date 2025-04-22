@@ -24,13 +24,12 @@ export default function BusyButton({
     }
 
     return (
-        <div className={rotating ? "planet-wrapper rotating" : "planet-wrapper"}>
-            <Planet
-                onClick={handleClick}
-                size={300}
-                mood={meBusy ? "sad" : "happy"}
-                color={color}
-            />
+        <div
+            className={rotating ? 'planet-wrapper rotating' : 'planet-wrapper'}
+            onClick={handleClick}
+        >
+            <Planet size={300} mood={meBusy ? 'sad' : 'happy'} color={color} />
         </div>
+
     )
 }
