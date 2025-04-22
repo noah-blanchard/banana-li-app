@@ -6,6 +6,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
+    workbox: {
+      cleanupOutdatedCaches: true,
+      clientsClaim: true,
+      cacheId: 'banana-li-app-v1.3'
+    },
     manifest: {
       name: 'banana-li-app',
       short_name: 'banana-li-app',
