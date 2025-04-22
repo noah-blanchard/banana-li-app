@@ -36,7 +36,7 @@ export default function BusyStatus({ user, otherBusy, onToggleBusy, meBusy }: Bu
   return (
     <Box w='100%' h='100vh' style={{
       position: 'relative',
-
+      overflow: 'hidden',
     }}>
       <Flex h='100vh' w='200%' style={{ position: 'absolute', top: 0, left: 0, zIndex: -1, transform: busyTranslate, transition: 'transform 0.25s ease' }}>
         <Box h='100%' w='50%' bg={'pastelRed.1'} />
